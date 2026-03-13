@@ -168,9 +168,22 @@ print(stock_profit([7,1,5,3,6,4]))
 def inventory_projection(stock, daily_sales):
     current_stock = stock
     
-    for day, inventory in enumerate(daily_sales):
+    for day, inventory in enumerate(daily_sales,1):
         current_stock -= inventory
         if current_stock<= 0:
-            return f"The stock will run out on day {day+1}"
+            return f"The stock will run out on day {day}"
         
     return f"Inventory lasts entire period. Remaining stock: {inventory}"
+print(inventory_projection(40,[10,15,20]))
+
+def flat(ls):
+    new = []
+    
+    for item in ls:
+        if isinstance(item, list):
+            new.extend(flat(item))
+        else:
+            new.append(item)
+    
+    return new
+print(flat([[[1],[2],3,4]]))     
